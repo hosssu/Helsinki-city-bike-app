@@ -3,6 +3,11 @@ html {
     min-height: 100%;
     margin: 0;
     background-color: rgb(244, 244, 244);
+
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
 }
 
 .main {
@@ -45,6 +50,7 @@ html {
     height: 45px;
     border: 1px solid rgba(21, 21, 21, 0.414);
     border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
     font-size: 25px;
     text-align: center;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E");
@@ -164,7 +170,8 @@ input[type="search"]:focus {
     margin-right: auto;
     justify-content: center;
     text-align: center;
-
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
 }
 
 .ResultOuter_stationView {
@@ -178,7 +185,7 @@ input[type="search"]:focus {
     border: 1px solid rgba(103, 103, 103, 0.455);
     margin-top: 20px;
     margin-left: 20px;
-    font-family: Arial, Helvetica, sans-serif
+    font-family: 'Nunito', sans-serif;
 }
 
 
@@ -193,15 +200,12 @@ input[type="search"]:focus {
     min-height: 400px;
     border-radius: 25px;
     padding: 20px;
-
     border: 1px solid rgba(103, 103, 103, 0.455);
     margin-top: 20px;
-    font-family: Arial, Helvetica, sans-serif
 }
 
 
 .StationView_diviver {
-
     display: flex;
     flex-flow: row;
     position: absolute;
@@ -224,7 +228,6 @@ input[type="search"]:focus {
     font-size: 14px;
     font-weight: 400;
     background-color: rgb(255, 255, 255);
-
 }
 
 .gmaps {
@@ -257,7 +260,6 @@ input[type="search"]:focus {
     display: flex;
     flex-flow: row;
     gap: 0px;
-
 }
 
 .result_item {
@@ -266,6 +268,8 @@ input[type="search"]:focus {
     padding: 0.2em;
     border-radius: 10px;
     color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
 }
 
 .result_item_header {
@@ -318,7 +322,7 @@ ul.Pagination {
 }
 
 .page-item {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 500;
     float: left;
     padding: 0 15px;
@@ -386,6 +390,8 @@ ul.nav {
     margin-bottom: 5px;
     font-size: 18px;
     color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
 }
 
 ul.nav li {
