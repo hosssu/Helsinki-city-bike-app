@@ -15,7 +15,8 @@ class ListStations extends React.Component {
         journeyData: [],
         journeyDataAll: [],
         load: false,
-        display: ''
+        display: '',
+        bikesAvailable: []
     }
 
 
@@ -31,7 +32,7 @@ class ListStations extends React.Component {
             ).then((result) => {
                 this.setState({ stationList: result.data });
                 this.setState({ loading: false });
-                console.log(this.state.activeView)
+
             })
         }
 
@@ -49,6 +50,39 @@ class ListStations extends React.Component {
                 this.setState({ loading: false });
             })
         }
+
+        const graphQLQuery = {
+            query: `query {
+                bikeRentalStations {
+                stationId
+                bikesAvailable
+                spacesAvailable
+                }
+              }`
+        }
+
+        const viewStation = async () => {
+            this.setState({ singleStation: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId')) })
+            this.setState({ activeView: true, loading: true, display: 'none' })
+            await axios.get('http://localhost:3301/get/allstations', {
+                params: {
+                    station_id: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId'))[0].station_id,
+                }
+            }).then((result) => {
+                this.setState({ journeyData: result.data, journeyDataAll: result.data })
+            })
+            await axios('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' },
+                data: graphQLQuery
+            })
+                .then((res) => {
+                    console.log(res.data.data.bikeRentalStations)
+                    this.setState({ bikesAvailable: res.data.data.bikeRentalStations })
+                })
+            this.setState({ loading: false })
+        }
+
 
 
         const sortCityAsc = () => {
@@ -75,18 +109,6 @@ class ListStations extends React.Component {
             this.setState({ stationList: [...this.state.stationList].sort((a, b) => b.station_id - a.station_id) })
         }
 
-        const viewStation = async () => {
-            this.setState({ singleStation: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId')) })
-            this.setState({ activeView: true, loading: true, display: 'none' })
-            await axios.get('http://localhost:3301/get/allstations', {
-                params: {
-                    station_id: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId'))[0].station_id,
-                }
-            }).then((result) => {
-                this.setState({ journeyData: result.data, journeyDataAll: result.data })
-            })
-            this.setState({ loading: false })
-        }
 
         const ChangeMonth = async (month, station_id) => {
             if (month == 'May') { month = '5' } else if (month == 'June') { month = 6 } else if (month == 'July') { month = 7 } else { return this.setState({ journeyData: this.state.journeyDataAll }) }
@@ -95,26 +117,29 @@ class ListStations extends React.Component {
 
         }
 
-
         return (
             <div>
                 <div className='container'>
                     <StationSelector searchStations={searchStations} listStations={listStations} viewStation={viewStation} />
                 </div>
                 <div className='ResultOuter' style={{ display: `${this.state.display}` }}>
-                    Search for Helsinki City Bike station or list all stations by clickig the 'List all stations' button. <br />
-                    If you want to see details of the station, select a station from the list by clicking it and then press 'View station info'.</div>
+                    Search for a Helsinki city bike station or list all stations by clicking the 'List all stations' button. <br />
+                    If you want to see details of the station and bike availability, select a station from the list by clicking it and then press 'View station info'.</div>
 
                 <div>
                     {!this.state.activeView ?
-                        <StationResults results={this.state.stationList}
+                        <StationResults
+                            results={this.state.stationList}
                             sortCityAsc={sortCityAsc}
                             sortCityDesc={sortCityDesc}
                             sortStationAsc={sortStationAsc}
                             sortStationDesc={sortStationDesc}
                             sortStationIdAsc={sortStationIdAsc}
                             sortStationIdDesc={sortStationIdDesc}
-                        /> : <StationView singleStation={this.state.singleStation}
+
+                        /> : <StationView
+                            singleStation={this.state.singleStation}
+                            bikesAvailable={this.state.bikesAvailable}
                             journeyData={this.state.journeyData}
                             loading={this.state.loading}
                             ChangeMonth={ChangeMonth}

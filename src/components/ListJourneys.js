@@ -13,7 +13,7 @@ class ListJourneys extends React.Component {
         currentPage: 1,
         postsPerPage: 1000,
         buttonshow: 'none',
-        show: ''
+        display: ''
 
     }
 
@@ -26,7 +26,7 @@ class ListJourneys extends React.Component {
     render() {
 
         const OnSearchSubmit = async (year, month, day) => {
-            this.setState({ loading: true })
+            this.setState({ loading: true, display: 'none' })
             await axios.get('http://localhost:3301/get/journeys',
                 {
                     params: {
@@ -69,8 +69,8 @@ class ListJourneys extends React.Component {
         }
 
         const Reset = (reset, buttonShow) => {
-            this.setState({ renderedResult: reset })
-            this.setState({ buttonshow: buttonShow })
+            this.setState({ renderedResult: reset, buttonshow: buttonShow, display: '' })
+
 
         }
 
@@ -124,9 +124,13 @@ class ListJourneys extends React.Component {
                         onFilterReturn={onFilterReturn}
                         setResults={setResults} />
                 </div>
-                <div className='ResultOuter' style={{ display: `${this.state.show}` }}>
-                    List journeys made with Helsinki City Bikes by selecting a date you wish to view and clicking the 'List journeys' button. <br />
-                    You can filter the results and view journeys departing or returning to an individual station by writing it's name in the field and pressing enter</div>
+                <div className='ResultOuter' style={{ display: `${this.state.display}` }}>
+                    There are over 2500 Helsinki city bikes in Helsinki metropolitan area.<br />
+                    In this service you can view journeys made with Helsinki city bikes.<br />
+                    To see all bike stations, bike availability and single station data, click the stations tab.<br /></div>
+                <div className='ResultOuter'>
+                    Start by selecting a date you wish to view and clicking the 'List journeys' button.
+                    You can filter the results and view journeys departing or returning to an individual station by writing the station name in the field and pressing enter</div>
 
 
                 <JourneyResults result={currentPost}

@@ -40,7 +40,9 @@ class StationSelector extends React.Component {
             if (window.localStorage.getItem('stationName') == null) {
                 return alert('You need to select a station first.')
             }
+
             this.props.viewStation()
+
         }
 
 

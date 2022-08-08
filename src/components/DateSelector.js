@@ -38,6 +38,9 @@ class BasicButtonExample extends React.Component {
         }
 
         const OnListJourneys = () => {
+            if (this.state.day === 'Month' || this.state.day === 'Day') {
+                return alert('You need to select a date first!')
+            }
             this.props.OnSearchSubmit(this.state.year, this.state.month, this.state.day,)
         }
 
