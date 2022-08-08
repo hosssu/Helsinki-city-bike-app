@@ -1,7 +1,5 @@
 import React from "react";
 import LoadingIcon from '../images/Loading.gif';
-import arrowDown from '../images/arrowDown.png'
-import arrowUp from '../images/arrowUp.png'
 import { useState } from "react";
 
 const StationResults = ({ results,
@@ -37,33 +35,25 @@ const StationResults = ({ results,
     }
 
 
+
+
     return (
         <div>
-            <div className='ResultOuter' >
+            <div className='ResultOuter_station' >
                 <div>
                     <div className='ResultInner'>
                         Showing {results.length} results
                     </div>
-                    <div className='ResultRow'>
-                        <div className='station_result_item_header'> City <img className='sortArrow' onClick={sortCityAsc} src={arrowDown} /><img className='sortArrow' onClick={sortCityDesc} src={arrowUp} /></div>
-                        <div className='station_result_item_header'> Station <img className='sortArrow' onClick={sortStationAsc} src={arrowDown} /><img className='sortArrow' onClick={sortStationDesc} src={arrowUp} /></div>
-                        <div className='station_result_item_header'> Address </div>
-                        <div className='station_result_item_header'> Station id <img className='sortArrow' onClick={sortStationIdAsc} src={arrowDown} /><img className='sortArrow' onClick={sortStationIdDesc} src={arrowUp} /></div>
-
+                    <div className='ResultRow_station'>
+                        {results.map(stations => (
+                            <div key={stations.id} className={activeStation === stations.id ? 'station_result_item_active' : 'station_result_item'} onMouseOver={() => setHover(stations.id)} onClick={selectStation}><p className='station_item'> {stations.Nimi} </p>{stations.Osoite}, {stations.Kaupunki}</div>
+                        ))}
                     </div>
-                    {results.map(stations => (
-                        <div key={stations.id} className='ResultRow'>
-                            <div className='station_result_item'>{stations.Kaupunki}</div>
-                            <div className={activeStation === stations.id ? 'station_result_item_active' : 'station_result_item'} onMouseOver={() => setHover(stations.id)} onClick={selectStation}>{stations.Nimi}/{stations.Namn}</div>
-                            <div className='station_result_item'>{stations.Osoite}</div>
-                            <div className='station_result_item'>{stations.station_id}</div>
-                        </div>
-                    ))}
                 </div>
 
             </div >
 
-        </div>
+        </div >
 
 
     )

@@ -77,7 +77,6 @@ class ListStations extends React.Component {
                 data: graphQLQuery
             })
                 .then((res) => {
-                    console.log(res.data.data.bikeRentalStations)
                     this.setState({ bikesAvailable: res.data.data.bikeRentalStations })
                 })
             this.setState({ loading: false })
@@ -122,9 +121,9 @@ class ListStations extends React.Component {
                 <div className='container'>
                     <StationSelector searchStations={searchStations} listStations={listStations} viewStation={viewStation} />
                 </div>
-                <div className='ResultOuter' style={{ display: `${this.state.display}` }}>
+                <div className='ResultOuter_station' style={{ display: `${this.state.display}` }}>
                     Search for a Helsinki city bike station or list all stations by clicking the 'List all stations' button. <br />
-                    If you want to see details of the station and bike availability, select a station from the list by clicking it and then press 'View station info'.</div>
+                    If you want to see details of the station and bike availability, select a station from the list and press 'View station info'.</div>
 
                 <div>
                     {!this.state.activeView ?

@@ -35,7 +35,7 @@ const Results = ({ result,
         return (round)
     }
 
-    console.log(result)
+
     return (
         <div className='ResultOuter'>
             <div>
