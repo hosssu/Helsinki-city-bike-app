@@ -1,5 +1,6 @@
 {
   "name": "hel_citybike",
+  "homepage": "https://kurpizza.testiosoite.com/hsl_city_bike/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

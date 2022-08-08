@@ -3,6 +3,7 @@ import DateSelector from './DateSelector'
 import axios from "axios";
 import JourneyResults from "./JourneyResults";
 import Pagination from "./Pagination";
+import hsl_bikesPic from '../images/hsl_bikes.jpg'
 
 class ListJourneys extends React.Component {
 
@@ -27,7 +28,7 @@ class ListJourneys extends React.Component {
 
         const OnSearchSubmit = async (year, month, day) => {
             this.setState({ loading: true, display: 'none' })
-            await axios.get('http://localhost:3301/get/journeys',
+            await axios.get('https://helsinki-city-bike-app.herokuapp.com/get/journeys',
                 {
                     params: {
                         year: year,
@@ -114,7 +115,7 @@ class ListJourneys extends React.Component {
 
 
         return (
-            <div>
+            <div><img className='hsl_bikesPic' src={hsl_bikesPic} />
                 <div className='container'>
                     <DateSelector OnSearchSubmit={OnSearchSubmit}
                         setResultAmount={setResultAmount}
