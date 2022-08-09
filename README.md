@@ -23,7 +23,7 @@
 * Total number of journeys departing and returning to station and ability to filter results monthly
 * Average distance of journeys departing and returning to station and ability to filter results monthly
 * Shows station position on map
-* Uses HSL open real-time GraphQL service to show available city bikes and empty return positions.
+* Uses HSL open real-time GraphQL service to show available city bikes in current station and empty return positions.
 
 ## Database: mySQL
 Validate data before importing:
