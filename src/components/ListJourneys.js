@@ -130,8 +130,10 @@ class ListJourneys extends React.Component {
                     In this service you can view journeys made with Helsinki city bikes.<br />
                     To see all bike stations, bike availability and single station data, click the stations tab.<br /></div>
                 <div className='ResultOuter'>
-                    Start by selecting a date you wish to view and clicking the 'List journeys' button.
-                    You can filter the results and view journeys departing or returning to an individual station by writing the station name in the field and pressing enter</div>
+                    Start by selecting a date you wish to view and clicking the 'List journeys' button.<br />
+                    Filter results in ascending or descending order by clicking the arrows. <br />
+                    View journeys departing or returning to an individual station by searching the station name. <br />
+                </div>
 
 
                 <JourneyResults result={currentPost}
