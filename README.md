@@ -16,6 +16,7 @@
 * Search for a station name (finnish or swedish) or by city
 * List all stations
 * Select a station from list and view more info
+* Shows selected station as text and active color before proceeding to view more info
 
 ## Single station view: 
 * Shows station name and address
