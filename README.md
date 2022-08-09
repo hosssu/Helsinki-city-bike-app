@@ -36,8 +36,18 @@ Validate data before importing:
 * Back end created using Node.Js Express
 * Front end and database are deployed and running in my web hotel
 * Back end is deployed and running in Heroku.
-* https://kurpizza.testiosoite.com/hsl_city_bike
+* Build up and running in: https://kurpizza.testiosoite.com/hsl_city_bike
 
 
 ## Under developement: 
 * UI for adding journeys or station 
+
+ ## Insctructions for local running: 
+ * mySQL server (localhost by default)
+ * 'npm start' for the front end. 
+* Back end server in \src\server folder. 
+  * Add your mySQL server username and password in .env -file under variables MYSQL_USER and MYSQL_PASSWORD
+  * local database name is by default 'helsinki_city_bike'
+  * .sql file downloadable by request
+  * Run back end with 'npm run devStart'
+
