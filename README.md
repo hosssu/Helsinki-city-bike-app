@@ -46,7 +46,7 @@ Validate data before importing:
  * mySQL server (localhost by default)
  * 'npm start' for the front end. 
 * Back end server in \src\server folder. 
-  * Add your mySQL server username and password in .env -file under variables MYSQL_USER and MYSQL_PASSWORD
+  * Add your mySQL server username and password in .env -file in server folder root, with variables MYSQL_USER=*your database username* and MYSQL_PASSWORD=*you database password*
   * local database name is by default 'helsinki_city_bike'
   * .sql file downloadable by request
   * Run back end with 'npm run devStart'
