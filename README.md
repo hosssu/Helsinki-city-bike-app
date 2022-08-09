@@ -34,7 +34,7 @@ Validate data before importing:
 ## Progress: 
 * Front end created using React
 * Back end created using Node.Js Express
-* Front end and database is deployed and running in my web hotel
+* Front end and database are deployed and running in my web hotel
 * Back end is deployed and running in Heroku.
 * https://kurpizza.testiosoite.com/hsl_city_bike
 
