@@ -30,16 +30,13 @@ Validate data before importing:
 * Removed journeys that covered distance shorter than 10 meters
 * Removed duplicate entries
 
-
-Front end created using React
-
-Back end created using Node.Js Express
- 
- Front end and database is deployed and running in my web hotel
-  
-  Back end is deployed and running in Heroku.
-
-https://kurpizza.testiosoite.com/hsl_city_bike
+## Progress: 
+* Front end created using React
+* Back end created using Node.Js Express
+* Front end and database is deployed and running in my web hotel
+* Back end is deployed and running in Heroku.
+* https://kurpizza.testiosoite.com/hsl_city_bike
 
 
-[^1]: Still under developement: UI for adding journeys or station 
+## Under developement: 
+* UI for adding journeys or station 
