@@ -9,7 +9,7 @@
    * Each journey shows the date of travel, departure and return station, distance in kilometers and duration in minutes
   * Filtering results to show different amount of results / page
 * Filtering the results by single station (departure or return)
-* filtering the results in ascending or descending order by city, station, distance or duration.
+* Filtering the results in ascending or descending order by city, station, distance or duration.
 
 
 ## Station list view:
