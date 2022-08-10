@@ -63,7 +63,7 @@ class AddJourneyForm extends React.Component {
                 return alert('Please input the distance using numbers')
             }
 
-            if ((this.state.returnTime.substring(0, 2) - this.state.departureTime.substring(0, 2)) < 0) {
+            if ((this.state.returnTime.substring(0, 2) - this.state.departureTime.substring(0, 2)) < 0 || (this.state.returnTime.substring(3, 5) - this.state.departureTime.substring(3, 5)) < 0) {
                 return alert('Nice try, Marty McFly! Please set a return time that is later than departure time.')
             }
 
