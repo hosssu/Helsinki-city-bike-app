@@ -11,6 +11,29 @@ body {
 
 }
 
+.Modal {
+    position: relative;
+    width: 25vw;
+    height: 50vh;
+    top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 30%;
+    border-radius: 40px;
+    background-color: #fcb919;
+
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(132, 132, 132, 0.503);
+}
+
 .hsl_bikesPic {
     position: absolute;
     left: 0px;
@@ -80,6 +103,24 @@ input[type="search"]:focus {
     opacity: 0.9;
 }
 
+.input [type=text] {
+    width: 200px;
+    height: 45px;
+    border: 1px solid rgba(21, 21, 21, 0.414);
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+input[type=text]:focus {
+    box-shadow: 0 0 4px 0 #c08704;
+    border-color: #3e3e3e;
+    outline: none;
+    opacity: 0.9;
+}
+
 .dateselector {
     height: 100px;
     display: flex;
@@ -114,7 +155,7 @@ input[type="search"]:focus {
 
     display: flex;
     position: absolute;
-    right: 20px;
+    right: 1%;
     flex-flow: column;
     justify-content: flex-end;
     align-items: flex-start;
@@ -145,22 +186,6 @@ input[type="search"]:focus {
     top: 8px
 }
 
-.ListJourneys_outer {
-
-    width: 1000px;
-    min-width: 600px;
-    margin-left: 0px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.selectBar_outer {
-    background-color: rgb(2, 45, 82);
-    width: 100vw;
-}
-
 .listSelector_right {
 
     position: relative;
@@ -171,7 +196,70 @@ input[type="search"]:focus {
     color: white;
 }
 
+.listSelector_left {
 
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    color: white;
+}
+
+.ListJourneys_outer {
+
+    width: 1000px;
+    min-width: 600px;
+    margin-left: 0px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 10px;
+    z-index: 20;
+}
+
+.addJourneyForm_outer {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    margin-left: 20px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    gap: 10px;
+}
+
+.addJourneyForm_middle {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: -40px;
+    height: 50%;
+    width: 100%;
+
+}
+
+.addJourneyForm_inner {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.addJourneyForm_dropdown {
+
+    position: relative;
+    display: block;
+    overflow-y: scroll;
+    height: 30vh;
+    z-index: 50 !important
+}
 
 .bikePic {
     position: absolute;

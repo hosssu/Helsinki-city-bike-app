@@ -5,12 +5,14 @@ const app = express();
 const mysql = require('mysql');
 require('dotenv').config();
 
-const connection = mysql.createConnection({
+const user = process.env.MYSQL_USER;
+const password = process.env.MYSQL_PASSWORD;
 
-    host: "185.179.117.16",
-    user: "killerpi",
-    password: "G#k.&P{2nP#}",
-    database: "killerpi_helsinki_city_bike"
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: user,
+    password: password,
+    database: "helsinki_city_bike"
 });
 
 app.use(cors());
@@ -40,7 +42,7 @@ app.get('/get/journeys', (req, res) => {
 });
 
 app.get('/get/stations', (req, res) => {
-    const sqlGet = 'SELECT * FROM stations ORDER BY `station_id` ASC'
+    const sqlGet = 'SELECT * FROM helsinki_city_bike.stations ORDER BY `station_id` ASC'
     connection.query(sqlGet, (err, result) => {
         res.send(result)
         console.log(err)
@@ -75,28 +77,6 @@ app.get('/get/station', (req, res) => {
         res.send(result)
         console.log(err)
     })
-})
-
-app.post('/post/station', (req, res) => {
-    var day = req.body.day;
-    if (day < 10) {
-        var day = '0' + day;
-    };
-    month = req.body.month;
-    if (month == 'May') { month = 5 }
-    else if (month == 'June') { month = 6 }
-    else { month = 7 };
-    departureId = req.body.departureId;
-    departureStation = req.body.departure;
-    returnStation = req.body.return;
-    returnId = req.body.returnId;
-    distance = parseInt(req.body.distance);
-    departureDate = '2021-0' + month + '-' + day + 'T' + req.body.departureTime + ':00';
-    returnDate = '2021-0' + month + '-' + day + 'T' + req.body.returnTime + ':00';
-    duration = req.body.duration;
-    table = '`2021-0' + month + '`';
-    const sqlPost = `INSERT INTO ${table} (Departure, ReturnDate, Departure_station_id, Departure_station_name, Return_station_id, Return_station_name, Covered_distance, Duration) VALUES (?,?,?,?,?,?,?,?)`
-    connection.query(sqlPost, [departureDate, returnDate, departureId, departureStation, returnId, returnStation, distance, duration], (err, result) => { console.log(err, result) })
 })
 
 

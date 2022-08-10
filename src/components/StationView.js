@@ -82,20 +82,11 @@ class StationView extends React.Component {
                             </div>
                         ))}
 
-                        {this.props.singleStation.map(station => (
-                            <div key={station.id} className='ResultOuter_stationView'>
-
-                                <div className='singlestationRow'></div>
-                                <div className='singlestationRow'>Top 5 most popular return stations starting from this station </div>
-                                <div className='singlestationRow'>Top 5 most popular departure stations ending at this station </div>
-                                <div className='singlestationRow'></div>
-                                <div className='singlestationRow'> </div>
-
-                            </div>))}
                     </div>
                     <div>
                         <div className='ResultOuter_stationView_map'>
-                            <iframe title='openStreetMap' className='gmaps' src={`https://www.openstreetmap.org/export/embed.html?bbox=${x}%2C${y}%2C${x}%2C${y}&amp;layer=mapnik`}></iframe>
+                            <iframe title='openStreetMap' className='gmaps' src={`https://www.openstreetmap.org/export/embed.html?bbox=${x}%2C${y}%2C${x}%2C${y}&amp;layer=mapnik&amp;marker=${y}%2C${x}`}></iframe>
+
                         </div>
                     </div>
                 </div>

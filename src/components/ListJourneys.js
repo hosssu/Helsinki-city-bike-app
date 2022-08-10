@@ -3,7 +3,10 @@ import DateSelector from './DateSelector'
 import axios from "axios";
 import JourneyResults from "./JourneyResults";
 import Pagination from "./Pagination";
-import hsl_bikesPic from '../images/hsl_bikes.jpg'
+import hsl_bikesPic from '../images/hsl_bikes.jpg';
+import Modal from 'react-modal'
+import AddJourneyForm from "./AddJourneyForm";
+import Button from 'react-bootstrap/Button';
 
 class ListJourneys extends React.Component {
 
@@ -14,7 +17,8 @@ class ListJourneys extends React.Component {
         currentPage: 1,
         postsPerPage: 1000,
         buttonshow: 'none',
-        display: ''
+        display: '',
+        modal: false,
 
     }
 
@@ -72,7 +76,6 @@ class ListJourneys extends React.Component {
         const Reset = (reset, buttonShow) => {
             this.setState({ renderedResult: reset, buttonshow: buttonShow, display: '' })
 
-
         }
 
         const sortDurationAsc = () => {
@@ -113,6 +116,22 @@ class ListJourneys extends React.Component {
         const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
         const currentPost = this.state.renderedResult.slice(indexOfFirstPost, indexOfLastPost)
 
+        const openModal = async () => {
+            this.setState({ loading: true })
+            await axios.get('https://helsinki-city-bike-app.herokuapp.com/get/stations'
+            ).then((result) => {
+                this.setState({ stationList: [...result.data].sort((a, b) => a.Nimi > b.Nimi ? 1 : -1) });
+                this.setState({ loading: false });
+            })
+            this.setState({ modal: true })
+        }
+
+        const closeModal = () => {
+            this.setState({ modal: false })
+        }
+
+
+
 
         return (
             <div><img className='hsl_bikesPic' src={hsl_bikesPic} />
@@ -123,7 +142,10 @@ class ListJourneys extends React.Component {
                         buttonShow={this.state.buttonshow}
                         onFilterDeparture={onFilterDeparture}
                         onFilterReturn={onFilterReturn}
-                        setResults={setResults} />
+                        setResults={setResults}
+                        openModal={openModal}
+
+                    />
                 </div>
                 <div className='ResultOuter' style={{ display: `${this.state.display}` }}>
                     There are over 2500 Helsinki city bikes in Helsinki metropolitan area.<br />
@@ -134,6 +156,15 @@ class ListJourneys extends React.Component {
                     Filter results in ascending or descending order by clicking the arrows. <br />
                     View journeys departing or returning to an individual station by searching the station name. <br />
                 </div>
+                <Modal className='Modal' overlayClassName="Overlay" isOpen={this.state.modal}
+                    onRequestClose={closeModal}>
+                    <AddJourneyForm stationList={this.state.stationList}
+                        loading={this.state.loading}
+                        closeModal={closeModal} />
+
+
+
+                </Modal>
 
 
                 <JourneyResults result={currentPost}
@@ -153,4 +184,5 @@ class ListJourneys extends React.Component {
     }
 }
 
+Modal.setAppElement('#modal')
 export default ListJourneys;

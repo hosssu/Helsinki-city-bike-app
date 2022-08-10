@@ -3,7 +3,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import timesIcon from '../images/times_icon.png'
+import timesIcon from '../images/times_icon.png';
+import axios from 'axios';
+
 
 
 class BasicButtonExample extends React.Component {
@@ -17,7 +19,8 @@ class BasicButtonExample extends React.Component {
         reset: [],
         buttonShow: 'none',
         entry: '',
-        slider: true
+        slider: true,
+        stationList: []
 
     }
 
@@ -57,9 +60,13 @@ class BasicButtonExample extends React.Component {
 
         }
 
+        const openModal = async () => {
+            this.props.openModal()
+        }
+
 
         return (
-            
+
             <div className="ListJourneys_outer">
                 <div className='dateselector'>
 
@@ -150,18 +157,15 @@ class BasicButtonExample extends React.Component {
                     <div className='daterow_item_times'>
                         <img className='timesIcon' style={{ display: this.props.buttonShow }} src={timesIcon} alt='Clear search results' onClick={Reset} />
                     </div>
-                    </div>
-                    
-
-                    <div className='daterow_item_addjourney'>
-                        <Button size='sm'  variant="outline-light" id='basic-button'>Add a journey</Button>
-                    </div>
-                      </div>
-
-                
+                </div>
 
 
-                
+                <div className='daterow_item_addjourney'>
+                    <Button size='sm' variant="outline-light" id='basic-button'
+                        onClick={openModal}>Add a journey</Button>
+                </div>
+
+            </div>
 
 
         );
