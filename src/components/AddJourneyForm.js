@@ -54,8 +54,7 @@ class AddJourneyForm extends React.Component {
             if (isNaN(this.state.departureTime.substring(0, 2)) ||
                 isNaN(this.state.departureTime.substring(3, 5)) ||
                 isNaN(this.state.returnTime.substring(0, 2)) ||
-                isNaN(this.state.returnTime.substring(3, 5)) ||
-                isNaN(this.state.distance)) {
+                isNaN(this.state.returnTime.substring(3, 5))) {
                 return alert('Please input the time using numbers')
             }
 
