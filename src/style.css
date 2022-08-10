@@ -101,10 +101,20 @@ input[type="search"]:focus {
     z-index: 2;
 }
 
-
 .daterow_item {
 
     display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    z-index: 1;
+}
+
+.daterow_item_addjourney {
+
+    display: flex;
+    position: absolute;
+    right: 20px;
     flex-flow: column;
     justify-content: flex-end;
     align-items: flex-start;
@@ -146,6 +156,11 @@ input[type="search"]:focus {
     gap: 10px;
 }
 
+.selectBar_outer {
+    background-color: rgb(2, 45, 82);
+    width: 100vw;
+}
+
 .listSelector_right {
 
     position: relative;
@@ -156,15 +171,7 @@ input[type="search"]:focus {
     color: white;
 }
 
-.listSelector_left {
 
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    align-items: flex-start;
-    color: white;
-}
 
 .bikePic {
     position: absolute;

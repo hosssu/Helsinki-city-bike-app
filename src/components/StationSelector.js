@@ -75,7 +75,9 @@ class StationSelector extends React.Component {
 
 
 
-
+                <div className='daterow_item_addjourney'>
+                        <Button size='sm'  variant="outline-light" id='basic-button'>Add a station</Button>
+                    </div>
             </div >
         )
     }

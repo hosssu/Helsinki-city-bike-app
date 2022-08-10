@@ -59,6 +59,7 @@ class BasicButtonExample extends React.Component {
 
 
         return (
+            
             <div className="ListJourneys_outer">
                 <div className='dateselector'>
 
@@ -149,11 +150,18 @@ class BasicButtonExample extends React.Component {
                     <div className='daterow_item_times'>
                         <img className='timesIcon' style={{ display: this.props.buttonShow }} src={timesIcon} alt='Clear search results' onClick={Reset} />
                     </div>
+                    </div>
+                    
 
-                </div>
-            </div >
+                    <div className='daterow_item_addjourney'>
+                        <Button size='sm'  variant="outline-light" id='basic-button'>Add a journey</Button>
+                    </div>
+                      </div>
+
+                
 
 
+                
 
 
         );
