@@ -38,7 +38,7 @@
 * E2E Testing
 * Cleaning CSS file
 
- ## Insctructions for local running:
+ # Insctructions for local running:
  * Front End:
    * 'npm install' to install dependencies
    * 'npm start' to start 
@@ -53,10 +53,11 @@
   * Front end is making axios requests to localhost:3301, make sure your back end is running at the same port or you need to change front end request url's. 
   
 
-## Progress: 
-* Front end and database are deployed and running in my web hotel
-* Back end is deployed and running in Heroku.
-* Build up and running in: https://kurpizza.testiosoite.com/hsl_city_bike
+# Progress: 
+* Front end is deployed and running in my web hotel
+* Back end is deployed and running in Heroku
+* MySQL database in my web hotel
+* Live build running in: https://kurpizza.testiosoite.com/hsl_city_bike
 
 
 ![HSL_citybike_1](https://user-images.githubusercontent.com/109145769/184131606-50b503f2-79fc-4f04-b240-deefa5f24341.jpg)
