@@ -43,7 +43,7 @@ Validate data before importing:
    * 'npm start' to start 
    
 * Back End:
-  * Needs a running mySQL server (localhost by default) 
+  * Needs a running mySQL server (localhost by default, if using something else, change server host address to server\index.js) 
   * server in \src\server folder. 
   * create .env -file in server folder root and add your mySQL server username and password with variables MYSQL_USER and MYSQL_PASSWORD
   * local database name is by default 'helsinki_city_bike'
