@@ -40,8 +40,8 @@ Validate data before importing:
  ## Insctructions for local running:
  * Front End:
    * 'npm install' to install dependencies
-   * 'npm start' for the front end. 
-   * Front end is making axios requests to localhost:3301, make sure your back end is running at the same port
+   * 'npm start' to start 
+   
 * Back End:
   * Needs a running mySQL server (localhost by default) 
   * server in \src\server folder. 
@@ -49,6 +49,8 @@ Validate data before importing:
   * local database name is by default 'helsinki_city_bike'
   * .sql file with validated data downloadable by request
   * Run back end with 'npm run devStart'
+  * Front end is making axios requests to localhost:3301, make sure your back end is running at the same port or you need to change front end request url's. 
+  
 
 ## Progress: 
 * Front end and database are deployed and running in my web hotel
