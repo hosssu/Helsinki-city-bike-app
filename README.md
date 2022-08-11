@@ -28,6 +28,7 @@
 * Uses HSL open real-time GraphQL service to show available city bikes in current station and empty return positions.
 
 ## Data:
+* Import data from HSL .csv files to MySQL database.
 * Validate data before importing:
   * Removed journeys that lasted less than 10 seconds
   * Removed journeys that covered distance shorter than 10 meters
