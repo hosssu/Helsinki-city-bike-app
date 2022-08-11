@@ -45,6 +45,9 @@ class StationSelector extends React.Component {
 
         }
 
+        const openModal = () => {
+            this.props.openModal()
+        }
 
 
         return (
@@ -76,8 +79,8 @@ class StationSelector extends React.Component {
 
 
                 <div className='daterow_item_addjourney'>
-                        <Button size='sm'  variant="outline-light" id='basic-button'>Add a station</Button>
-                    </div>
+                    <Button size='sm' onClick={openModal} variant="outline-light" id='basic-button'>Add a station</Button>
+                </div>
             </div >
         )
     }

@@ -28,7 +28,7 @@ const Tabs = () => {
                 <li className={activeTab === "tab2" ? "active" : ""} onClick={handleTab2}>Stations</li>
             </ul>
             <div className="main_sub"><div className='title'>Helsinki city bikes</div>
-                <a className='bikePic' href='https://kurpizza.testiosoite.com/hsl_city_bike' ><img src={bikePic} className='bikePic' alt='Cycle home!' /></a>
+                <a className='bikePic' href='/' ><img src={bikePic} className='bikePic' alt='Cycle home!' /></a>
                 {activeTab === "tab1" ? <Tab1 /> : <Tab2 />}
 
             </div>

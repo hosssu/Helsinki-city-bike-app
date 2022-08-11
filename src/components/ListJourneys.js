@@ -32,7 +32,7 @@ class ListJourneys extends React.Component {
 
         const OnSearchSubmit = async (year, month, day) => {
             this.setState({ loading: true, display: 'none' })
-            await axios.get('https://helsinki-city-bike-app.herokuapp.com/get/journeys',
+            await axios.get('http://localhost:3301/get/journeys',
                 {
                     params: {
                         year: year,
@@ -118,7 +118,7 @@ class ListJourneys extends React.Component {
 
         const openModal = async () => {
             this.setState({ loading: true })
-            await axios.get('https://helsinki-city-bike-app.herokuapp.com/get/stations'
+            await axios.get('http://localhost:3301/get/stations'
             ).then((result) => {
                 this.setState({ stationList: [...result.data].sort((a, b) => a.Nimi > b.Nimi ? 1 : -1) });
                 this.setState({ loading: false });
@@ -157,14 +157,8 @@ class ListJourneys extends React.Component {
                     Filter results in ascending or descending order by clicking the arrows. <br />
                     View journeys departing or returning to an individual station by searching the station name. <br />
                 </div>
-                <Modal className='Modal' overlayClassName="Overlay" isOpen={this.state.modal}
-                    onRequestClose={closeModal}>
-                    <AddJourneyForm stationList={this.state.stationList}
-                        loading={this.state.loading}
-                        closeModal={closeModal} />
-
-
-
+                <Modal className='Modal' overlayClassName="Overlay" isOpen={this.state.modal} onRequestClose={closeModal}>
+                    <AddJourneyForm stationList={this.state.stationList} loading={this.state.loading} closeModal={closeModal} />
                 </Modal>
 
 

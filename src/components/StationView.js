@@ -18,8 +18,6 @@ class StationView extends React.Component {
         }
     }
 
-
-
     render() {
 
         if (this.props.loading) {
@@ -35,16 +33,17 @@ class StationView extends React.Component {
 
         const x = this.props.singleStation.map(station => (station.x))
         const y = this.props.singleStation.map(station => (station.y))
-        const departures = this.props.journeyData.filter(station => station.Departure_station_name === this.props.singleStation[0].Nimi)
-        const returns = this.props.journeyData.filter(station => station.Return_station_name === this.props.singleStation[0].Nimi)
+        const departures = this.props.journeyData.filter(station => station.Departure_station_name == this.props.singleStation[0].Nimi)
+        const returns = this.props.journeyData.filter(station => station.Return_station_name == this.props.singleStation[0].Nimi)
         const departureAmount = departures.length
         const returnAmount = returns.length
         const averageDepartDistance = Math.floor(departures.map(station => station.Covered_distance).reduce((a, b) => a + b, 0) / departureAmount)
         const averageReturnDistance = Math.floor(returns.map(station => station.Covered_distance).reduce((a, b) => a + b, 0) / returnAmount)
-        const availability = this.props.bikesAvailable.filter(bikes => bikes.stationId === bike_Id(this.props.singleStation))
+        const availability = this.props.bikesAvailable.filter(bikes => bikes.stationId == bike_Id(this.props.singleStation))
         const capacity = availability[0].bikesAvailable + availability[0].spacesAvailable
         const available = [...Array(availability[0].bikesAvailable)].map((elem, index) => <div className='bikesAvailable' key={index}>&nbsp;&nbsp;</div>)
         const spacesAvailable = [...Array(availability[0].spacesAvailable)].map((elem, index) => <div className='spacesAvailable' key={index}> &nbsp;&nbsp;</div>)
+
 
         return (
             <div>

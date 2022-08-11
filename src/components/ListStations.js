@@ -4,6 +4,9 @@ import StationSelector from "./StationSelector";
 import StationResults from "./StationResults";
 import StationView from "./StationView";
 import hsl_bikesPic from '../images/hsl_bikes.jpg'
+import Modal from 'react-modal'
+import AddStationForm from "./AddStationForm";
+import loadingPic from '../images/Loading.gif'
 
 
 class ListStations extends React.Component {
@@ -23,24 +26,24 @@ class ListStations extends React.Component {
 
     render() {
 
-        window.localStorage.removeItem('stationId')
+
         window.localStorage.removeItem('stationName')
+        window.localStorage.removeItem('stationId')
 
         const listStations = async () => {
             this.setState({ activeView: false })
             this.setState({ loading: true })
-            await axios.get('https://helsinki-city-bike-app.herokuapp.com/get/stations'
+            await axios.get('http://localhost:3301/get/stations'
             ).then((result) => {
                 this.setState({ stationList: result.data });
-                this.setState({ loading: false });
-
             })
+            this.setState({ loading: false })
         }
 
         const searchStations = async (stationName) => {
             this.setState({ activeView: false })
             this.setState({ loading: true })
-            await axios.get('https://helsinki-city-bike-app.herokuapp.com/get/stations'
+            await axios.get('http://localhost:3301/get/stations'
             ).then((result) => {
                 const search = result.data.filter(stations =>
                     stations.Nimi.toLowerCase().includes(`${stationName.toLowerCase()}`) ||
@@ -65,21 +68,27 @@ class ListStations extends React.Component {
         const viewStation = async () => {
             this.setState({ singleStation: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId')) })
             this.setState({ activeView: true, loading: true, display: 'none' })
-            await axios.get('https://helsinki-city-bike-app.herokuapp.com/get/allstations', {
+            await axios.get('http://localhost:3301/get/allstations', {
                 params: {
                     station_id: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId'))[0].station_id,
                 }
             }).then((result) => {
                 this.setState({ journeyData: result.data, journeyDataAll: result.data })
             })
-            await axios('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
-                method: 'post',
-                headers: { 'Content-Type': 'application/json' },
-                data: graphQLQuery
-            })
-                .then((res) => {
-                    this.setState({ bikesAvailable: res.data.data.bikeRentalStations })
+            if (window.localStorage.getItem('station_id') > 902) { this.setState({ bikesAvailable: [{ stationId: window.localStorage.getItem('station_id'), bikesAvailable: 0, spacesAvailable: 0 }] }) }
+            else {
+
+                await axios('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
+                    method: 'post',
+                    headers: { 'Content-Type': 'application/json' },
+                    data: graphQLQuery
                 })
+                    .then((res) => {
+                        if (res.data.data[0] !== null) {
+                            this.setState({ bikesAvailable: res.data.data.bikeRentalStations })
+                        }
+                    })
+            }
             this.setState({ loading: false })
         }
 
@@ -109,26 +118,42 @@ class ListStations extends React.Component {
             this.setState({ stationList: [...this.state.stationList].sort((a, b) => b.station_id - a.station_id) })
         }
 
-
         const ChangeMonth = async (month, station_id) => {
             if (month == 'May') { month = '5' } else if (month == 'June') { month = 6 } else if (month == 'July') { month = 7 } else { return this.setState({ journeyData: this.state.journeyDataAll }) }
             const filterMonth = this.state.journeyDataAll.filter(station => station.Departure.substring(6, 7) == month)
             this.setState({ journeyData: filterMonth })
+        }
 
+        const openModal = async () => {
+            this.setState({ loading: true })
+            await axios.get('http://localhost:3301/get/stations'
+            ).then((result) => {
+                this.setState({ stationList: result.data });
+                this.setState({ loading: false });
+            })
+            this.setState({ modal: true })
+        }
+
+        const closeModal = () => {
+            this.setState({ modal: false })
         }
 
         return (
             <div><img className='hsl_bikesPic' style={{ display: `${this.state.display}` }} src={hsl_bikesPic} />
                 <div className='container'>
-                    <StationSelector searchStations={searchStations} listStations={listStations} viewStation={viewStation} />
+                    <StationSelector searchStations={searchStations} listStations={listStations} viewStation={viewStation} openModal={openModal} />
                 </div>
                 <div className='ResultOuter_station' style={{ display: `${this.state.display}` }}>
                     Search for a Helsinki city bike station or list all stations by clicking the 'List all stations' button. <br />
                     If you want to see details of the station and bike availability, select a station from the list and press 'View station info'.</div>
-
                 <div>
+                    <Modal className='Modal' overlayClassName="Overlay" isOpen={this.state.modal} onRequestClose={closeModal}>
+                        <AddStationForm loading={this.state.loading} closeModal={closeModal} stationList={this.state.stationList} />
+                    </Modal>
+
                     {!this.state.activeView ?
                         <StationResults
+                            loading={this.state.loading}
                             results={this.state.stationList}
                             sortCityAsc={sortCityAsc}
                             sortCityDesc={sortCityDesc}
@@ -145,10 +170,11 @@ class ListStations extends React.Component {
                             ChangeMonth={ChangeMonth}
                             load={this.state.load} />}
                 </div>
-                
+
             </div>
         )
     }
 }
 
+Modal.setAppElement('#modal')
 export default ListStations

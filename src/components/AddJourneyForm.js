@@ -2,7 +2,6 @@ import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import LoadingIcon from '../images/Loading.gif';
 import axios from "axios";
 
@@ -27,10 +26,6 @@ class AddJourneyForm extends React.Component {
     render() {
 
 
-        const CheckInput = () => {
-
-            return true
-        }
 
         const addJourney = (event) => {
             event.preventDefault()
@@ -62,11 +57,11 @@ class AddJourneyForm extends React.Component {
                 return alert('Please input the distance using numbers')
             }
 
-            if ((this.state.returnTime.substring(0, 2) - this.state.departureTime.substring(0, 2)) < 0 || (this.state.returnTime.substring(3, 5) - this.state.departureTime.substring(3, 5)) < 0) {
+            if ((this.state.returnTime.substring(0, 2) - this.state.departureTime.substring(0, 2)) * 3600 + (this.state.returnTime.substring(3, 5) - this.state.departureTime.substring(3, 5)) * 60 < 0) {
                 return alert('Nice try, Marty McFly! Please set a return time that is later than departure time.')
             }
 
-            axios.post('https://helsinki-city-bike-app.herokuapp.com/post/station',
+            axios.post('http://localhost:3301/post/journey',
                 {
                     departure: this.state.departure,
                     departureId: this.state.departureId,
@@ -82,7 +77,7 @@ class AddJourneyForm extends React.Component {
             )
 
             this.props.closeModal()
-            alert('Journey added!')
+            alert('New journey added!')
         }
 
 

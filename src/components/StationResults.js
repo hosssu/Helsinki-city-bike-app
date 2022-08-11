@@ -32,11 +32,10 @@ const StationResults = ({ results,
         const stationId = results.filter(stations => { return stations.id === hover })
         window.localStorage.setItem('stationId', stationId[0].id)
         window.localStorage.setItem('stationName', stationId[0].Nimi)
+        window.localStorage.setItem('station_id', stationId[0].station_id)
         setActiveStation(stationId[0].id)
 
     }
-
-
 
 
     return (

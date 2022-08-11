@@ -79,6 +79,39 @@ app.get('/get/station', (req, res) => {
     })
 })
 
+app.post('/post/journey', (req, res) => {
+    var day = req.body.day;
+    if (day < 10) {
+        var day = '0' + day;
+    };
+    month = req.body.month;
+    if (month == 'May') { month = 5 }
+    else if (month == 'June') { month = 6 }
+    else { month = 7 };
+    departureId = req.body.departureId;
+    departureStation = req.body.departure;
+    returnStation = req.body.return;
+    returnId = req.body.returnId;
+    distance = parseInt(req.body.distance);
+    departureDate = '2021-0' + month + '-' + day + 'T' + req.body.departureTime + ':00';
+    returnDate = '2021-0' + month + '-' + day + 'T' + req.body.returnTime + ':00';
+    duration = req.body.duration;
+    table = '`2021-0' + month + '`';
+    const sqlPost = `INSERT INTO ${table} (Departure, ReturnDate, Departure_station_id, Departure_station_name, Return_station_id, Return_station_name, Covered_distance, Duration) VALUES (?,?,?,?,?,?,?,?)`
+    connection.query(sqlPost, [departureDate, returnDate, departureId, departureStation, returnId, returnStation, distance, duration], (err, result) => { console.log(err, result) })
+})
+
+app.post('/post/station', (req, res) => {
+    const station_id = req.body.stationId
+    const stationName = req.body.stationName;
+    const stationAddress = req.body.stationAddress;
+    const stationCity = req.body.stationCity
+    const x = req.body.x;
+    const y = req.body.y;
+    const sqlPost = 'INSERT INTO `stations` (station_id, Nimi, Namn, Name, Osoite, Adress, Kaupunki, x, y) VALUES (?,?,?,?,?,?,?,?,?)'
+    connection.query(sqlPost, [station_id, stationName, stationName, stationName, stationAddress, stationAddress, stationCity, x, y], (err, result) => { console.log(err, result) })
+})
+
 
 
 const PORT = process.env.PORT || 3301

@@ -14,7 +14,7 @@ body {
 .Modal {
     position: relative;
     width: 500px;
-    height: 650px;
+    height: 670px;
     top: 12%;
     margin-left: auto;
     margin-right: auto;
@@ -273,7 +273,6 @@ input[type=text]:focus {
     transition: 10s;
     transform: translateX(+1000%);
 }
-
 
 
 
@@ -592,6 +591,10 @@ ul.Pagination {
     justify-content: center;
     align-items: center;
 
+}
+
+p.footnote {
+    font-size: 13px;
 }
 
 ul.nav {
