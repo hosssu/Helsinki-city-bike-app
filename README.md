@@ -10,6 +10,7 @@
   * Filtering results to show different amount of results / page
 * Filtering the results by single station (departure or return)
 * Filtering the results in ascending or descending order by city, station, distance or duration.
+* Possibility to add new custom city bike journeys
 
 
 ## Station list view:
@@ -17,6 +18,7 @@
 * List all stations
 * Select a station from list and view more info
 * Shows selected station as text and active color before proceeding to view more info
+* Possibility to add new city bike stations
 
 ## Single station view: 
 * Shows station name and address
@@ -40,7 +42,7 @@ Validate data before importing:
 
 
 ## Under developement: 
-* UI for adding journeys or station 
+
 
  ## Insctructions for local running: 
  * mySQL server (localhost by default)
