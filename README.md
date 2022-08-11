@@ -27,11 +27,11 @@
 * Shows station position on map
 * Uses HSL open real-time GraphQL service to show available city bikes in current station and empty return positions.
 
-## Database: mySQL
-Validate data before importing:
-* Removed journeys that lasted less than 10 seconds
-* Removed journeys that covered distance shorter than 10 meters
-* Removed duplicate entries
+## Data:
+* Validate data before importing:
+  * Removed journeys that lasted less than 10 seconds
+  * Removed journeys that covered distance shorter than 10 meters
+  * Removed duplicate entries
 
 ## Under developement: 
 * E2E Testing
