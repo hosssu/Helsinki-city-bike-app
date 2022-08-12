@@ -44,7 +44,7 @@ class AddJourneyForm extends React.Component {
                 this.state.departureTime.substring(2, 3) !== ':' ||
                 this.state.returnTime.substring(2, 3) !== ':' ||
                 this.state.departureTime.length > 5 ||
-                this.state.returnTime.length > 5) { return alert('Please input time as HH:mm') }
+                this.state.returnTime.length > 5) { return alert('Please input departure and return time as HH:mm') }
 
             if (isNaN(this.state.departureTime.substring(0, 2)) ||
                 isNaN(this.state.departureTime.substring(3, 5)) ||
@@ -195,7 +195,7 @@ class AddJourneyForm extends React.Component {
 
                 </form>
 
-            ) : (<div><img src={LoadingIcon} /></div>)} </>
+            ) : (<div><img src={LoadingIcon} alt='Loading icon' /></div>)} </>
         )
     }
 }

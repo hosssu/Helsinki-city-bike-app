@@ -6,7 +6,6 @@ import Pagination from "./Pagination";
 import hsl_bikesPic from '../images/hsl_bikes.jpg';
 import Modal from 'react-modal'
 import AddJourneyForm from "./AddJourneyForm";
-import Button from 'react-bootstrap/Button';
 
 class ListJourneys extends React.Component {
 
@@ -134,7 +133,7 @@ class ListJourneys extends React.Component {
 
 
         return (
-            <div><img className='hsl_bikesPic' src={hsl_bikesPic} />
+            <div><img className='hsl_bikesPic' src={hsl_bikesPic} alt='City bike background' />
                 <div className='container'>
                     <DateSelector OnSearchSubmit={OnSearchSubmit}
                         setResultAmount={setResultAmount}

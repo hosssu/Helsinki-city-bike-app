@@ -16,7 +16,9 @@ class AddJourneyForm extends React.Component {
 
 
         const addStation = () => {
-
+            if (this.state.stationName === '' || this.state.stationAddress === '' || this.state.stationCity === '' || this.state.x === '' || this.state.y === '') {
+                return alert('You need to fill out all the fields!')
+            }
             if (this.props.stationList.filter((station) => station.Nimi.toLowerCase() === this.state.stationName.toLowerCase())[0] == null) {
                 axios.post('http://localhost:3301/post/station',
                     {
@@ -28,7 +30,7 @@ class AddJourneyForm extends React.Component {
                         y: this.state.y
                     })
                 this.props.closeModal()
-                alert('New station added!')
+                alert(`New station, ${this.state.stationName} was added!`)
             }
             else { alert('That station already exists!') }
         }
@@ -41,19 +43,19 @@ class AddJourneyForm extends React.Component {
 
                         <div className='daterow_item'>Station name
                             <div className='input'>
-                                <input type='text' style={{ width: '300px' }} onChange={(e) => this.setState({ stationName: e.target.value })} required value={this.state.stationName}></input>
+                                <input type='text' required style={{ width: '300px' }} onChange={(e) => this.setState({ stationName: e.target.value })}></input>
                             </div>
                         </div>
 
                         <div className='daterow_item'>Address
                             <div className='input'>
-                                <input type='text' style={{ width: '300px' }} onChange={(e) => this.setState({ stationAddress: e.target.value })} required value={this.state.stationAddress}></input>
+                                <input type='text' style={{ width: '300px' }} onChange={(e) => this.setState({ stationAddress: e.target.value })} required></input>
                             </div>
                         </div>
 
                         <div className='daterow_item'> City
                             <div className='input'>
-                                <input type='text' style={{ width: '300px' }} onChange={(e) => this.setState({ stationCity: e.target.value })} required value={this.state.stationCity}></input>
+                                <input type='text' style={{ width: '300px' }} onChange={(e) => this.setState({ stationCity: e.target.value })} required></input>
                             </div>
                         </div>
 

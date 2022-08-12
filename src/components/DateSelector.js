@@ -4,7 +4,6 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import timesIcon from '../images/times_icon.png';
-import axios from 'axios';
 
 
 
@@ -41,7 +40,7 @@ class BasicButtonExample extends React.Component {
         }
 
         const OnListJourneys = () => {
-            if (this.state.day === 'Month' || this.state.day === 'Day') {
+            if (this.state.month === 'Month' || this.state.day === 'Day') {
                 return alert('You need to select a date first!')
             }
             this.props.OnSearchSubmit(this.state.year, this.state.month, this.state.day,)
@@ -50,6 +49,7 @@ class BasicButtonExample extends React.Component {
         const Reset = () => {
             this.props.Reset(this.state.reset, this.state.buttonShow)
             this.setState({ day: 'Day' })
+            this.setState({ month: 'Month' })
             this.setState({ show: 1000 })
         }
 

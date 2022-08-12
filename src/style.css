@@ -1,5 +1,6 @@
+/* HTML AND BODY */
+
 html {
-    /* To make use of full height of page*/
     min-height: 100%;
     margin: 0;
     background-color: rgb(244, 244, 244);
@@ -8,8 +9,11 @@ html {
 
 body {
     font-family: 'Nunito', sans-serif;
-
 }
+
+
+
+/* MODAL FOR ADDING JOURNEYS AND STATIONS */
 
 .Modal {
     position: relative;
@@ -35,17 +39,56 @@ body {
     background-color: rgba(132, 132, 132, 0.503);
 }
 
-.hsl_bikesPic {
-    position: absolute;
-    left: 0px;
-    top: 119px;
-    height: 88vh;
-    min-width: 100%;
+.addJourneyForm_outer {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    margin-left: 20px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    gap: 10px;
 }
 
-.empty {
-    display: none;
+.addJourneyForm_middle {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: -40px;
+    height: 50%;
+    width: 100%;
+
 }
+
+.addJourneyForm_inner {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.addJourneyForm_dropdown {
+
+    position: relative;
+    display: block;
+    overflow-y: scroll;
+    height: 30vh;
+    z-index: 50 !important
+}
+
+p.footnote {
+    font-size: 13px;
+}
+
+
+
+/* MAIN CONTAINERS */
 
 .main {
     width: 100%;
@@ -66,7 +109,7 @@ body {
     margin-right: auto;
     margin-top: -15px;
     background-color: #fcb919;
-    border-top: 1px solid rgb(255, 255, 255);
+    border-top: 1px solid rgb(244, 244, 244);
     z-index: 2;
 }
 
@@ -82,45 +125,9 @@ body {
     z-index: 5;
 }
 
-.input [type=search] {
-    width: 400px;
-    height: 45px;
-    border: 1px solid rgba(21, 21, 21, 0.414);
-    border-radius: 10px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 25px;
-    text-align: center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E");
-    background-position: 15px 8px;
-    background-size: 25px;
-    background-repeat: no-repeat;
-    opacity: 0.6;
-}
 
-input[type="search"]:focus {
-    box-shadow: 0 0 4px 0 #c08704;
-    border-color: #3e3e3e;
-    outline: none;
-    opacity: 0.9;
-}
 
-.input [type=text] {
-    width: 200px;
-    height: 45px;
-    border: 1px solid rgba(21, 21, 21, 0.414);
-    border-radius: 10px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    text-align: center;
-    opacity: 0.6;
-}
-
-input[type=text]:focus {
-    box-shadow: 0 0 4px 0 #c08704;
-    border-color: #3e3e3e;
-    outline: none;
-    opacity: 0.9;
-}
+/* NAVBAR ELEMENTS */
 
 .dateselector {
     height: 100px;
@@ -219,47 +226,119 @@ input[type=text]:focus {
     z-index: 20;
 }
 
-.addJourneyForm_outer {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-    margin-left: 20px;
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 300;
-    font-size: 1.2rem;
-    gap: 10px;
-}
 
-.addJourneyForm_middle {
-    position: absolute;
-    bottom: 30px;
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: -40px;
-    height: 50%;
-    width: 100%;
+/* NAVBAR SLIDER */
 
-}
-
-.addJourneyForm_inner {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    gap: 20px;
-}
-
-.addJourneyForm_dropdown {
-
+.switch {
     position: relative;
-    display: block;
-    overflow-y: scroll;
-    height: 30vh;
-    z-index: 50 !important
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #d69c15;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider:before {
+    transform: translateX(18px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+
+
+/* FOR SEARCH AND TEXT INPUT */
+
+.input [type=search] {
+    width: 400px;
+    height: 45px;
+    border: 1px solid rgba(21, 21, 21, 0.414);
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E");
+    background-position: 15px 8px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+}
+
+input[type="search"]:focus {
+    box-shadow: 0 0 4px 0 #c08704;
+    border-color: #3e3e3e;
+    outline: none;
+    opacity: 0.9;
+}
+
+.input [type=text] {
+    width: 200px;
+    height: 45px;
+    border: 1px solid rgba(21, 21, 21, 0.414);
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+input[type=text]:focus {
+    box-shadow: 0 0 4px 0 #c08704;
+    border-color: #3e3e3e;
+    outline: none;
+    opacity: 0.9;
+}
+
+
+
+
+/* IMAGES AND ICONS */
+
+.hsl_bikesPic {
+    position: absolute;
+    left: 0px;
+    top: 119px;
+    height: 85vh;
+    min-width: 100%;
+}
+
+.empty {
+    display: none;
 }
 
 .bikePic {
@@ -274,14 +353,41 @@ input[type=text]:focus {
     transform: translateX(+1000%);
 }
 
-
-
 .loading_data {
     display: block;
     position: absolute;
     left: 300px;
     width: 150px;
 }
+
+.timesIcon {
+    width: 30px;
+    margin-left: 10px;
+    transition: 0.2s;
+}
+
+.timesIcon:hover {
+    transform: scale(1.2);
+}
+
+.sortArrow {
+    opacity: 0.5;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 15px;
+    transition: 0.3s;
+}
+
+.sortArrow:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+
+
+/* JOURNEY AND STATION RESULTS */
+
 
 .ResultOuter {
     background-color: rgb(255, 255, 255);
@@ -319,6 +425,100 @@ input[type=text]:focus {
     font-family: 'Nunito', sans-serif;
     font-size: 1.2rem;
 }
+
+.ResultOuter_empty {
+    display: flex;
+    position: relative;
+    border-radius: 50px;
+    width: 100%;
+    padding: 40px;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    font-size: 5rem;
+}
+
+.ResultInner {
+    font-size: 18px;
+    padding: 2;
+}
+
+.ResultRow {
+    display: flex;
+    flex-flow: row;
+    gap: 0px;
+}
+
+.ResultRow_station {
+    display: flex;
+    max-width: 1300px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.station_result_item {
+
+    display: flex;
+    flex-flow: column;
+    border: 1px solid rgb(97, 97, 97);
+    width: 400px;
+    padding: 1em;
+    margin-top: 15px;
+    border-radius: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    color: black;
+    cursor: pointer;
+}
+
+.station_result_item_active {
+    background-color: #fcb919;
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+    padding: 1em;
+    margin-top: 15px;
+    border-radius: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    color: black;
+    cursor: pointer;
+}
+
+p.station_item {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.result_item {
+    border: 1px solid rgb(97, 97, 97);
+    width: 200px;
+    padding: 0.2em;
+    border-radius: 10px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+}
+
+.result_item_header {
+    background-color: #fcb919;
+    color: white;
+    border: 1px solid rgb(97, 97, 97);
+    width: 200px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+
+}
+
+
+
+/* SINGLE STATION VIEW */
+
 
 .ResultOuter_stationView {
     background-color: rgb(255, 255, 255);
@@ -422,104 +622,9 @@ input[type=text]:focus {
 
 }
 
-.ResultOuter_empty {
-    display: flex;
-    position: relative;
-    border-radius: 50px;
-    width: 100%;
-    padding: 40px;
-    margin: 20px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    font-size: 5rem;
-}
-
-.ResultInner {
-    font-size: 18px;
-    padding: 2;
-}
-
-.ResultRow {
-    display: flex;
-    flex-flow: row;
-    gap: 0px;
-}
-
-.ResultRow_station {
-    display: flex;
-    max-width: 1300px;
-    flex-flow: row wrap;
-    justify-content: space-between;
-}
-
-.station_result_item {
-
-    display: flex;
-    flex-flow: column;
-    border: 1px solid rgb(97, 97, 97);
-    width: 400px;
-    padding: 1em;
-    margin-top: 15px;
-    border-radius: 20px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
-    color: black;
-    cursor: pointer;
-}
-
-.station_result_item_active {
-    background-color: #fcb919;
-    display: flex;
-    flex-flow: column;
-    width: 400px;
-    padding: 1em;
-    margin-top: 15px;
-    border-radius: 20px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
-    color: black;
-    cursor: pointer;
-}
-
-p.station_item {
-    font-size: 2rem;
-    font-weight: 600;
-}
-
-.result_item {
-    border: 1px solid rgb(97, 97, 97);
-    width: 200px;
-    padding: 0.2em;
-    border-radius: 10px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8rem;
-}
-
-.result_item_header {
-    background-color: #fcb919;
-    color: white;
-    border: 1px solid rgb(97, 97, 97);
-    width: 200px;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 10px;
-
-}
 
 
-ul.Pagination {
-
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-
-}
+/* PAGINATION */
 
 .page-item {
     padding: 0 15px;
@@ -560,30 +665,6 @@ ul.Pagination {
     color: white;
 }
 
-.timesIcon {
-    width: 30px;
-    margin-left: 10px;
-    transition: 0.2s;
-}
-
-.timesIcon:hover {
-    transform: scale(1.2);
-}
-
-.sortArrow {
-    opacity: 0.5;
-    margin-bottom: 2px;
-    margin-right: 5px;
-    margin-left: 5px;
-    width: 15px;
-    transition: 0.3s;
-}
-
-.sortArrow:hover {
-    opacity: 1;
-    transform: scale(1.2);
-}
-
 .PageNumbers {
     display: flex;
     padding: 20px;
@@ -593,9 +674,16 @@ ul.Pagination {
 
 }
 
-p.footnote {
-    font-size: 13px;
+ul.Pagination {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
+
+
+/* TAB ELEMENTS */
+
 
 ul.nav {
     width: 700px;
@@ -638,59 +726,8 @@ ul.nav li.active {
     z-index: 5;
 }
 
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 22px;
 
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #d69c15;
-
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 4px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked+.slider:before {
-    transform: translateX(18px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
+/* RESPONSIVENESS */
 
 @media screen and (max-width: 2000px) {
     .title {

@@ -6,7 +6,7 @@ import StationView from "./StationView";
 import hsl_bikesPic from '../images/hsl_bikes.jpg'
 import Modal from 'react-modal'
 import AddStationForm from "./AddStationForm";
-import loadingPic from '../images/Loading.gif'
+
 
 
 class ListStations extends React.Component {
@@ -139,7 +139,7 @@ class ListStations extends React.Component {
         }
 
         return (
-            <div><img className='hsl_bikesPic' style={{ display: `${this.state.display}` }} src={hsl_bikesPic} />
+            <div><img className='hsl_bikesPic' style={{ display: `${this.state.display}` }} src={hsl_bikesPic} alt='City bike background' />
                 <div className='container'>
                     <StationSelector searchStations={searchStations} listStations={listStations} viewStation={viewStation} openModal={openModal} />
                 </div>
