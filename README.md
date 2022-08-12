@@ -43,7 +43,7 @@
   * Removed journeys that covered distance shorter than 10 meters
   * Removed duplicate entries
 
- # Insctructions for local running:
+ # Instructions for local running:
  * Front End:
    * 'npm install' to install dependencies
    * 'npm start' to start 
