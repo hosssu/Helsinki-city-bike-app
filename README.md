@@ -1,5 +1,14 @@
 # Helsinki city bike App
 
+# The exercise
+> Let's imagine that you have received an interesting project offer to create a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area.
+
+> Create a web application that uses a backend service to fetch the data. Backend can be made with any technology. We at Solita use for example (not in preference  order) Java/Kotlin/Clojure/C#/TypeScript/Go but you are free to choose any other technology as well.
+> 
+> Backend can use a database, or it can be memory-based. Real database use is a preferable choice because it allows you to show broader skills. Also, the datasets are > quite big so in-memory operations may be quite slow.
+
+> You can also freely choose the frontend (and possibly mobile frontend) technologies to use. The important part is to give good instructions on how to build and run the project.
+
 # Features: 
 
 ## Journey view:
@@ -49,6 +58,7 @@
   * create .env -file in server folder root and add your mySQL server username and password with variables MYSQL_USER and MYSQL_PASSWORD
   * local database name is by default 'helsinki_city_bike'
   * .sql file with validated data downloadable by request
+  * 'npm install' to install dependencies
   * Run back end with 'npm run devStart'
   * Front end is making axios requests to localhost:3301, make sure your back end is running at the same port or you need to change front end request url's. 
   
