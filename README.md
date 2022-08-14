@@ -44,9 +44,11 @@
   * Removed duplicate entries
 
  # Instructions for local running:
+ *  `git clone https://github.com/hosssu/Helsinki-city-bike-app.git`
+ 
  * Front End:
-   * 'npm install' to install dependencies
-   * 'npm start' to start 
+   * `npm install` to install dependencies
+   * `npm start` to start 
    
 * Back End:
   * Needs a running mySQL server (localhost by default, if using something else, change server host address to server\index.js) 
@@ -54,8 +56,8 @@
   * create .env -file in server folder root and add your mySQL server username and password with variables MYSQL_USER and MYSQL_PASSWORD
   * local database name is by default 'helsinki_city_bike'
   * .sql file with validated data downloadable by request
-  * 'npm install' to install dependencies
-  * Run back end with 'npm run devStart'
+  * `npm install` to install dependencies
+  * `npm run devStart` to start back end
   * Front end is making axios requests to localhost:3301, make sure your back end is running at the same port or you need to change front end request url's. 
   
 
@@ -64,7 +66,7 @@
 * Back end is deployed and running in Heroku
 * MySQL database in my web hotel
 * Live build running in: https://kurpizza.testiosoite.com/hsl_city_bike
-* Maual E2E Testing done. Test report uploaded.
+* Manual E2E Testing done. Test report uploaded.
 
 ![HSL_citybike_1](https://user-images.githubusercontent.com/109145769/184131606-50b503f2-79fc-4f04-b240-deefa5f24341.jpg)
 ![HSL_citybike_2](https://user-images.githubusercontent.com/109145769/184131634-6052cf67-e0c1-486a-97b2-b63d3f23d593.jpg)
