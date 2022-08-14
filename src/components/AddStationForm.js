@@ -20,7 +20,7 @@ class AddJourneyForm extends React.Component {
                 return alert('You need to fill out all the fields!')
             }
             if (this.props.stationList.filter((station) => station.Nimi.toLowerCase() === this.state.stationName.toLowerCase())[0] == null) {
-                axios.post('http:localhost:3301/post/station',
+                axios.post('http://localhost:3301/post/station',
                     {
                         stationId: (this.props.stationList[this.props.stationList.length - 1].station_id) + 1,
                         stationName: this.state.stationName,

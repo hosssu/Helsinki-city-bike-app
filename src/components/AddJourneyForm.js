@@ -61,7 +61,7 @@ class AddJourneyForm extends React.Component {
                 return alert('Nice try, Marty McFly! Please set a return time that is later than departure time.')
             }
 
-            axios.post('http:localhost:3301/post/journey',
+            axios.post('http://localhost:3301/post/journey',
                 {
                     departure: this.state.departure,
                     departureId: this.state.departureId,

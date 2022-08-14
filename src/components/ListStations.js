@@ -33,7 +33,7 @@ class ListStations extends React.Component {
         const listStations = async () => {
             this.setState({ activeView: false })
             this.setState({ loading: true })
-            await axios.get('http:localhost:3301/get/stations'
+            await axios.get('http://localhost:3301/get/stations'
             ).then((result) => {
                 this.setState({ stationList: result.data });
             })
@@ -43,7 +43,7 @@ class ListStations extends React.Component {
         const searchStations = async (stationName) => {
             this.setState({ activeView: false })
             this.setState({ loading: true })
-            await axios.get('http:localhost:3301/get/stations'
+            await axios.get('http://localhost:3301/get/stations'
             ).then((result) => {
                 const search = result.data.filter(stations =>
                     stations.Nimi.toLowerCase().includes(`${stationName.toLowerCase()}`) ||
@@ -68,7 +68,7 @@ class ListStations extends React.Component {
         const viewStation = async () => {
             this.setState({ singleStation: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId')) })
             this.setState({ activeView: true, loading: true, display: 'none' })
-            await axios.get('http:localhost:3301/get/allstations', {
+            await axios.get('http://localhost:3301/get/allstations', {
                 params: {
                     station_id: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId'))[0].station_id,
                 }
@@ -126,7 +126,7 @@ class ListStations extends React.Component {
 
         const openModal = async () => {
             this.setState({ loading: true })
-            await axios.get('http:localhost:3301/get/stations'
+            await axios.get('http://localhost:3301/get/stations'
             ).then((result) => {
                 this.setState({ stationList: result.data });
                 this.setState({ loading: false });
