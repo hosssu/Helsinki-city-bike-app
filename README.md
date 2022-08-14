@@ -43,11 +43,7 @@
   * Removed journeys that covered distance shorter than 10 meters
   * Removed duplicate entries
 
-## Under developement: 
-* E2E Testing
-* Cleaning CSS file
-
- # Insctructions for local running:
+ # Instructions for local running:
  * Front End:
    * 'npm install' to install dependencies
    * 'npm start' to start 
@@ -68,7 +64,7 @@
 * Back end is deployed and running in Heroku
 * MySQL database in my web hotel
 * Live build running in: https://kurpizza.testiosoite.com/hsl_city_bike
-
+* Maual E2E Testing done. Test report uploaded.
 
 ![HSL_citybike_1](https://user-images.githubusercontent.com/109145769/184131606-50b503f2-79fc-4f04-b240-deefa5f24341.jpg)
 ![HSL_citybike_2](https://user-images.githubusercontent.com/109145769/184131634-6052cf67-e0c1-486a-97b2-b63d3f23d593.jpg)
