@@ -61,7 +61,7 @@ class AddJourneyForm extends React.Component {
                 return alert('Nice try, Marty McFly! Please set a return time that is later than departure time.')
             }
 
-            axios.post('http://localhost:3301/post/journey',
+            axios.post('http:localhost:3301/post/journey',
                 {
                     departure: this.state.departure,
                     departureId: this.state.departureId,
@@ -85,7 +85,7 @@ class AddJourneyForm extends React.Component {
             <> {!this.state.loading ? (
                 <form onSubmit={addJourney}>
                     <div className='addJourneyForm_outer'>
-                        <h3 style={{ padding: '20px' }}>Add a custom city bike journey</h3>
+                        <h3 style={{ padding: '20px' }}>Add a new city bike journey</h3>
                         <div className='addJourneyForm_inner' style={{ zIndex: '22' }}>
                             <div className='daterow_item' >Departure station
                                 <DropdownButton variant="light" size='lg' id="dropdown-basic-button" title={this.state.departure}>

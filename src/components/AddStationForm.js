@@ -20,7 +20,7 @@ class AddJourneyForm extends React.Component {
                 return alert('You need to fill out all the fields!')
             }
             if (this.props.stationList.filter((station) => station.Nimi.toLowerCase() === this.state.stationName.toLowerCase())[0] == null) {
-                axios.post('http://localhost:3301/post/station',
+                axios.post('http:localhost:3301/post/station',
                     {
                         stationId: (this.props.stationList[this.props.stationList.length - 1].station_id) + 1,
                         stationName: this.state.stationName,
@@ -59,15 +59,15 @@ class AddJourneyForm extends React.Component {
                             </div>
                         </div>
 
-                        <div className='daterow_item'> Latitude Y*
+                        <div className='daterow_item'> Latitude X*
                             <div className='input'>
-                                <input type='text' onChange={(e) => this.setState({ y: e.target.value })} required ></input>
+                                <input type='text' onChange={(e) => this.setState({ x: e.target.value })} required ></input>
                             </div>
                         </div>
 
-                        <div className='daterow_item'> Longitude X*
+                        <div className='daterow_item'> Longitude Y*
                             <div className='input'>
-                                <input type='text' onChange={(e) => this.setState({ x: e.target.value })} required ></input>
+                                <input type='text' onChange={(e) => this.setState({ y: e.target.value })} required ></input>
                             </div>
                         </div>
 

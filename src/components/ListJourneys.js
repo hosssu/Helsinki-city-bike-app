@@ -31,7 +31,7 @@ class ListJourneys extends React.Component {
 
         const OnSearchSubmit = async (year, month, day) => {
             this.setState({ loading: true, display: 'none' })
-            await axios.get('http://localhost:3301/get/journeys',
+            await axios.get('http:localhost:3301/get/journeys',
                 {
                     params: {
                         year: year,
@@ -117,7 +117,7 @@ class ListJourneys extends React.Component {
 
         const openModal = async () => {
             this.setState({ loading: true })
-            await axios.get('http://localhost:3301/get/stations'
+            await axios.get('http:localhost:3301/get/stations'
             ).then((result) => {
                 this.setState({ stationList: [...result.data].sort((a, b) => a.Nimi > b.Nimi ? 1 : -1) });
                 this.setState({ loading: false });
@@ -149,12 +149,12 @@ class ListJourneys extends React.Component {
                 <div className='ResultOuter' style={{ display: `${this.state.display}` }}>
                     There are over 2500 Helsinki city bikes in Helsinki metropolitan area.<br />
                     In this service you can view journeys made with Helsinki city bikes.<br />
-                    Or you can add your own custom city bike journey by clicking the 'Add a journey' button.<br />
                     To see all bike stations, bike availability and single station data, click the stations tab.<br /></div>
                 <div className='ResultOuter'>
-                    Start by selecting a date you wish to view and clicking the 'List journeys' button.<br />
-                    Filter results in ascending or descending order by clicking the arrows. <br />
-                    View journeys departing or returning to an individual station by searching the station name. <br />
+                    To view journeys, start by selecting a date you wish to view and click the 'List journeys' button.<br />
+                    Filter results and view journeys departing or returning to an individual station by searching the station name. <br />
+                    To add a custom city bike journey, click the 'Add a journey' button.<br />
+
                 </div>
                 <Modal className='Modal' overlayClassName="Overlay" isOpen={this.state.modal} onRequestClose={closeModal}>
                     <AddJourneyForm stationList={this.state.stationList} loading={this.state.loading} closeModal={closeModal} />

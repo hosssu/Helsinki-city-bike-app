@@ -21,7 +21,7 @@ const StationResults = ({ results,
 
 
     if (loading) {
-        return <div className='ResultOuter_empty'><img src={LoadingIcon} /></div>
+        return <div className='ResultOuter_empty'><img src={LoadingIcon} alt='Loading icon' /></div>
     }
 
     if (results[0] == null) {
@@ -46,9 +46,9 @@ const StationResults = ({ results,
                         Showing {results.length} results.
                     </div>
                     <div className='ResultInner'>Sort stations by
-                        name:<img className='sortArrow' onClick={sortStationAsc} src={arrowDown} /><img className='sortArrow' onClick={sortStationDesc} src={arrowUp} />
-                        station id: <img className='sortArrow' onClick={sortStationIdAsc} src={arrowDown} /><img className='sortArrow' onClick={sortStationIdDesc} src={arrowUp} />
-                        City: <img className='sortArrow' onClick={sortCityAsc} src={arrowDown} /><img className='sortArrow' onClick={sortCityDesc} src={arrowUp} />
+                        name:<img className='sortArrow' onClick={sortStationAsc} src={arrowDown} alt='arrowDown' /><img className='sortArrow' onClick={sortStationDesc} src={arrowUp} alt='arrowUp' />
+                        station id: <img className='sortArrow' onClick={sortStationIdAsc} src={arrowDown} alt='arrowDown' /><img className='sortArrow' onClick={sortStationIdDesc} src={arrowUp} alt='arrowUp' />
+                        City: <img className='sortArrow' onClick={sortCityAsc} src={arrowDown} alt='arrowDown' /><img className='sortArrow' onClick={sortCityDesc} src={arrowUp} alt='arrowUp' />
                     </div>
                     <div className='ResultRow_station'>
                         {results.map(stations => (

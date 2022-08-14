@@ -33,7 +33,7 @@ class ListStations extends React.Component {
         const listStations = async () => {
             this.setState({ activeView: false })
             this.setState({ loading: true })
-            await axios.get('http://localhost:3301/get/stations'
+            await axios.get('http:localhost:3301/get/stations'
             ).then((result) => {
                 this.setState({ stationList: result.data });
             })
@@ -43,7 +43,7 @@ class ListStations extends React.Component {
         const searchStations = async (stationName) => {
             this.setState({ activeView: false })
             this.setState({ loading: true })
-            await axios.get('http://localhost:3301/get/stations'
+            await axios.get('http:localhost:3301/get/stations'
             ).then((result) => {
                 const search = result.data.filter(stations =>
                     stations.Nimi.toLowerCase().includes(`${stationName.toLowerCase()}`) ||
@@ -68,7 +68,7 @@ class ListStations extends React.Component {
         const viewStation = async () => {
             this.setState({ singleStation: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId')) })
             this.setState({ activeView: true, loading: true, display: 'none' })
-            await axios.get('http://localhost:3301/get/allstations', {
+            await axios.get('http:localhost:3301/get/allstations', {
                 params: {
                     station_id: this.state.stationList.filter(station => station.id == window.localStorage.getItem('stationId'))[0].station_id,
                 }
@@ -126,7 +126,7 @@ class ListStations extends React.Component {
 
         const openModal = async () => {
             this.setState({ loading: true })
-            await axios.get('http://localhost:3301/get/stations'
+            await axios.get('http:localhost:3301/get/stations'
             ).then((result) => {
                 this.setState({ stationList: result.data });
                 this.setState({ loading: false });
@@ -145,7 +145,8 @@ class ListStations extends React.Component {
                 </div>
                 <div className='ResultOuter_station' style={{ display: `${this.state.display}` }}>
                     Search for a Helsinki city bike station or list all stations by clicking the 'List all stations' button. <br />
-                    If you want to see details of the station and bike availability, select a station from the list and press 'View station info'.</div>
+                    If you want to see details of the station and bike availability, select a station from the list and press 'View station info'.<br />
+                    To add a custom city bike station, click the 'Add a station' button.</div>
                 <div>
                     <Modal className='Modal' overlayClassName="Overlay" isOpen={this.state.modal} onRequestClose={closeModal}>
                         <AddStationForm loading={this.state.loading} closeModal={closeModal} stationList={this.state.stationList} />
